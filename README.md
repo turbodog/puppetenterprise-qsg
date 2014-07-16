@@ -7,10 +7,11 @@ This repository provides a Vagrant environment so that you can easily spin up a 
 Vagrant (tested with v1.6.3)  
 Virtualbox (tested with v4.3.12)  
 [vagrant-hostmanager](https://github.com/smdahlen/vagrant-hostmanager) plugin  
-Vagrant `[centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-nocm)` box  
+Vagrant [centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-nocm) box  
 
 ## Usage
 `vagrant plugin install vagrant-hostmanager`  
+`vagrant box add puppetlabs/centos-6.5-64-nocm`
 `vagrant up`  
 `vagrant snap take` (optional, to avoid having to destroy and recreate boxes when you want to start over with clean boxes)  
 Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/misc/pe-files) in this folder  
