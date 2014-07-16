@@ -11,7 +11,7 @@ Vagrant [centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-n
 
 ## Usage
 `vagrant plugin install vagrant-hostmanager`  
-`vagrant box add puppetlabs/centos-6.5-64-nocm`
+`vagrant box add puppetlabs/centos-6.5-64-nocm`  
 `vagrant up`  
 `vagrant snap take` (optional, to avoid having to destroy and recreate boxes when you want to start over with clean boxes)  
 Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/misc/pe-files) in this folder  
