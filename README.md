@@ -16,6 +16,7 @@ Vagrant [centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-n
 `vagrant snap take` (optional, to avoid having to destroy and recreate boxes when you want to start over with clean boxes)  
 Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/misc/pe-files) in this folder  
 `vagrant ssh master`  
+`sudo service iptables stop`
 `tar -xzf /vagrant/puppet-enterprise-installer-whatever.tar.gz`  
 `cd puppet-enterprise-install-whatever`  
 `sudo ./puppet-enterprise-installer`  
