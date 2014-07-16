@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos-65-x64-vbox436-nocm"
+  config.vm.box = "puppetlabs/centos-6.5-64-nocm"
 
   # Using https://github.com/smdahlen/vagrant-hostmanager so the master and agent names resolve automagically
   config.hostmanager.enabled = true
