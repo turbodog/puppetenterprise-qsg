@@ -28,7 +28,7 @@ Accept the node request in the PE console
 To start fresh, if you took a snapshot in the step above, `vagrant snap rollback`
 
 ## Notes
-* By default, master and agent will both be built from `centos-65-x64-vbox436-nocm`. If you want a different OS, you can set this on the `config.vm.box` line in `Vagrantfile`
+* By default, master and agent will both be built from the [puppetlabs/centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-nocm) box. If you want a different OS, you can set this on the `config.vm.box` line in `Vagrantfile`
 * Master ip address is 192.168.0.2  
 * Agent ip address is 192.168.0.3  
 * Port 3000 for the Puppet Enterprise installer web UI and port 4443 for the PE console are automatically forwarded to localhost  
