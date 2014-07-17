@@ -12,6 +12,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "puppetlabs/centos-6.5-64-nocm"
 
+  # Turn off the firewall
+  config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
+
   # Using https://github.com/smdahlen/vagrant-hostmanager so the master and agent names resolve automagically
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
