@@ -20,7 +20,7 @@ Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/download-p
 `cd puppet-enterprise-install-whatever`  
 `sudo ./puppet-enterprise-installer`  
 In your browser, browse to https://master:3000 or https://localhost:3000 and complete the install  
-Use `master` as the master's FQDN and `vagrant/vagrant` as the SSH username and password  
+Use `master` as the master's FQDN and `vagrant/vagrant` as the SSH username and password. If credential validation is failing before you begin installing, reset the vagrant user's passwd to vagrant.  
 After installation, your master console will be available at https://master or https://localhost:4443  
 To install the agent, `vagrant ssh agent`  
 `curl -k https://master:8140/packages/current/install.bash | sudo bash`  
