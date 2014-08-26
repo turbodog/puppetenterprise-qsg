@@ -15,7 +15,7 @@ Vagrant [centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-n
 `vagrant up`  
 `vagrant snap take` (optional, to avoid having to destroy and recreate boxes when you want to start over with clean boxes)  
 Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/download-puppet-enterprise) in this folder  
-`vagrant ssh master`  
+`vagrant ssh master` (if you get a password prompt, the correct response is *probably* your password on the host system as the vagrant-hostmaster plugin performs a sudo on your host)  
 `tar -xzf /vagrant/puppet-enterprise-installer-whatever.tar.gz`  
 `cd puppet-enterprise-install-whatever`  
 `sudo ./puppet-enterprise-installer`  
