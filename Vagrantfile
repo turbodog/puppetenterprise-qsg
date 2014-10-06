@@ -12,7 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "puppetlabs/centos-6.5-64-nocm"
 
-  # Turn off the firewall
+  # Turn off the firewall and other post-config steps
+  # config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
   config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
 
   # Using https://github.com/smdahlen/vagrant-hostmanager so the master and agent names resolve automagically
@@ -74,7 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
-     vb.customize ["modifyvm", :id, "--memory", "1024"]
+     vb.customize ["modifyvm", :id, "--memory", "2048"]
    end
   #
   # View the documentation for the provider you're using for more

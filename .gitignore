@@ -1,2 +1,3 @@
 puppet-enterprise-*
 .vagrant
+master.answers
