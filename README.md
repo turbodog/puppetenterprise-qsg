@@ -14,13 +14,13 @@ Vagrant [centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-n
 `vagrant box add puppetlabs/centos-6.5-64-nocm`  
 `vagrant up`  
 `vagrant snap take` (optional, to avoid having to destroy and recreate boxes when you want to start over with clean boxes)  
-Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/misc/pe-files) in this folder  
-`vagrant ssh master`  
+Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/download-puppet-enterprise) in this folder  
+`vagrant ssh master` (if you get a password prompt, the correct response is *probably* your password on the host system as the vagrant-hostmaster plugin performs a sudo on your host)  
 `tar -xzf /vagrant/puppet-enterprise-installer-whatever.tar.gz`  
 `cd puppet-enterprise-install-whatever`  
 `sudo ./puppet-enterprise-installer`  
 In your browser, browse to https://master:3000 or https://localhost:3000 and complete the install  
-Use `master` as the master's FQDN and `vagrant/vagrant` as the SSH username and password  
+Use `master` as the master's FQDN and `vagrant/vagrant` as the SSH username and password. If credential validation is failing before you begin installation, reset the vagrant user's passwd to `vagrant`.  
 After installation, your master console will be available at https://master or https://localhost:4443  
 To install the agent, `vagrant ssh agent`  
 `curl -k https://master:8140/packages/current/install.bash | sudo bash`  
