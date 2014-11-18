@@ -10,11 +10,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "puppetlabs/centos-6.5-64-nocm"
+  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
 
   # Turn off the firewall and other post-config steps
-  # config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
-  config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
+  #config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
+  #config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
+  config.vm.provision "shell", inline: "systemctl stop firewalld && systemctl disable firewalld && cp /vagrant/finishenterprisingme.sh ~"
 
   # Using https://github.com/smdahlen/vagrant-hostmanager so the master and agent names resolve automagically
   config.hostmanager.enabled = true
@@ -28,12 +29,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         master.vm.network :forwarded_port, guest: 3000, host: 3000
         master.vm.network :forwarded_port, guest: 443, host: 4443
         master.hostmanager.aliases = %w(master puppet)
+#        master.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
   end
 
     config.vm.define "agent" do |agent|
    #       agent.vm.box = "centos-65-x64-vbox436-nocm"
           agent.vm.network :private_network, ip: "192.168.0.3"
           agent.hostmanager.aliases = %w(agent)
+ #         agent.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
+   end
+
+    config.vm.define "windows" do |windows|
+        windows.vm.box = "win2012r2-x64-virtualbox-nocm.box"
+        windows.vm.network :private_network, ip: "192.168.0.4"
+        windows.vm.provision "shell", path: "scripts/bootstrap.ps1"
+        windows.hostmanager.aliases = %w(windows)
+        #windows.vm.gui = true
+        windows.vm.provision "shell", path: "scripts/bootstrap.ps1"
     end
 
 #    config.vm.network :private_network, type: "dhcp"
