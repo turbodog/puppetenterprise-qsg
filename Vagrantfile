@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
+  config.vm.box = "puppetlabs/centos-6.6-64-nocm"
 
   # Turn off the firewall and other post-config steps
   #config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "master" do |master|
   #      master.vm.box = "centos-65-x64-vbox436-nocm"
-        master.vm.network :private_network, ip: "192.168.0.2"
+        master.vm.network :private_network, ip: "192.168.100.2"
         master.vm.network :forwarded_port, guest: 3000, host: 3000
         master.vm.network :forwarded_port, guest: 443, host: 4443
         master.hostmanager.aliases = %w(master puppet)
@@ -34,14 +34,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.define "agent" do |agent|
    #       agent.vm.box = "centos-65-x64-vbox436-nocm"
-          agent.vm.network :private_network, ip: "192.168.0.3"
+          agent.vm.network :private_network, ip: "192.168.100.3"
           agent.hostmanager.aliases = %w(agent)
  #         agent.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
    end
 
     config.vm.define "windows" do |windows|
         windows.vm.box = "win2012r2-x64-virtualbox-nocm.box"
-        windows.vm.network :private_network, ip: "192.168.0.4"
+        windows.vm.network :private_network, ip: "192.168.100.4"
         windows.vm.provision "shell", path: "scripts/bootstrap.ps1"
         windows.hostmanager.aliases = %w(windows)
         #windows.vm.gui = true
