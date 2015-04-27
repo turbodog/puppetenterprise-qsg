@@ -13,9 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puppetlabs/centos-6.6-64-nocm"
 
   # Turn off the firewall and other post-config steps
-  config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
   #config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
-  #config.vm.provision "shell", inline: "systemctl stop firewalld && systemctl disable firewalld && cp /vagrant/finishenterprisingme.sh ~"
+  config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
 
   # Using https://github.com/smdahlen/vagrant-hostmanager so the master and agent names resolve automagically
   config.hostmanager.enabled = true
@@ -24,19 +23,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.include_offline = true
 
   config.vm.define "master" do |master|
-  #      master.vm.box = "centos-65-x64-vbox436-nocm"
         master.vm.network :private_network, ip: "192.168.100.2"
         master.vm.network :forwarded_port, guest: 3000, host: 3000
         master.vm.network :forwarded_port, guest: 443, host: 4443
         master.hostmanager.aliases = %w(master puppet)
-#        master.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
+        master.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
+        config.vm.provider :virtualbox do |vb|
+          vb.customize ["modifyvm", :id, "--memory", "4096"]
+        end
   end
 
     config.vm.define "agent" do |agent|
-   #       agent.vm.box = "centos-65-x64-vbox436-nocm"
-          agent.vm.network :private_network, ip: "192.168.100.3"
-          agent.hostmanager.aliases = %w(agent)
- #         agent.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
+        agent.vm.network :private_network, ip: "192.168.100.3"
+        agent.hostmanager.aliases = %w(agent)
+        config.vm.provider :virtualbox do |vb|
+          vb.customize ["modifyvm", :id, "--memory", "1024"]
+        end
    end
 
     config.vm.define "windows" do |windows|
@@ -87,7 +89,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
-     vb.customize ["modifyvm", :id, "--memory", "4096"]
+  #   vb.customize ["modifyvm", :id, "--memory", "4096"]
    end
   #
   # View the documentation for the provider you're using for more
