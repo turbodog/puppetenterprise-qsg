@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         master.vm.network :forwarded_port, guest: 3000, host: 3000
         master.vm.network :forwarded_port, guest: 443, host: 4443
         master.hostmanager.aliases = %w(master puppet)
-        master.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off && cp /vagrant/finishenterprisingme.sh ~"
+        master.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
         config.vm.provider :virtualbox do |vb|
           vb.customize ["modifyvm", :id, "--memory", "4096"]
         end
