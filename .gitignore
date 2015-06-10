@@ -2,3 +2,4 @@ puppet-enterprise-*
 .vagrant
 master.answers
 installme.tar
+.DS_store
