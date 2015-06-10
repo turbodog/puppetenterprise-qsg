@@ -13,8 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puppetlabs/centos-6.6-64-nocm"
 
   # Turn off the firewall and other post-config steps
-  #config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
-  config.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
+  config.vm.provision "shell", path: "scripts/linux.sh"
 
   # Using https://github.com/smdahlen/vagrant-hostmanager so the master and agent names resolve automagically
   config.hostmanager.enabled = true
@@ -27,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         master.vm.network :forwarded_port, guest: 3000, host: 3000
         master.vm.network :forwarded_port, guest: 443, host: 4443
         master.hostmanager.aliases = %w(master puppet)
-        master.vm.provision "shell", inline: "sudo service iptables stop && chkconfig iptables off"
+        master.vm.provision "shell", path: "scripts/master.sh"
         config.vm.provider :virtualbox do |vb|
           vb.customize ["modifyvm", :id, "--memory", "4096"]
         end
