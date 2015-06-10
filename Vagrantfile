@@ -36,6 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define "agent" do |agent|
         agent.vm.network :private_network, ip: "192.168.100.3"
         agent.hostmanager.aliases = %w(agent)
+        agent.vm.provision "shell", path: "scripts/agent.sh"
         config.vm.provider :virtualbox do |vb|
           vb.customize ["modifyvm", :id, "--memory", "1024"]
         end
