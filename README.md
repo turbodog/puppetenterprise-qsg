@@ -7,11 +7,11 @@ This repository provides a Vagrant environment so that you can easily spin up a 
 Vagrant (tested with v1.6.3)  
 Virtualbox (tested with v4.3.12)  
 [vagrant-hostmanager](https://github.com/smdahlen/vagrant-hostmanager) plugin  
-Vagrant [centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-nocm) box  
+Vagrant [centos-6.6-64-nocm](https://atlas.hashicorp.com/puppetlabs/boxes/centos-6.6-64-nocm) box  
 
 ## Usage
 `vagrant plugin install vagrant-hostmanager`  
-`vagrant box add puppetlabs/centos-6.5-64-nocm`  
+`vagrant box add puppetlabs/centos-6.6-64-nocm`  
 `vagrant up`  
 `vagrant snap take` (optional, to avoid having to destroy and recreate boxes when you want to start over with clean boxes)  
 Put the EL 6 x86_64 [PE master install tarball](http://puppetlabs.com/download-puppet-enterprise) in this folder  
@@ -28,7 +28,7 @@ Accept the node request in the PE console
 To start fresh, if you took a snapshot in the step above, `vagrant snap rollback`
 
 ## Notes
-* By default, master and agent will both be built from the [puppetlabs/centos-6.5-64-nocm](https://vagrantcloud.com/puppetlabs/centos-6.5-64-nocm) box. If you want a different OS, you can set this on the `config.vm.box` line in `Vagrantfile`
+* By default, master and agent will both be built from the [puppetlabs/centos-6.6-64-nocm](https://atlas.hashicorp.com/opentable/boxes/win-2012r2-standard-amd64-nocm) box. If you want a different OS, you can set this on the `config.vm.box` line in `Vagrantfile`
 * Master ip address is 192.168.0.2  
 * Agent ip address is 192.168.0.3  
 * Port 3000 for the Puppet Enterprise installer web UI and port 4443 for the PE console are automatically forwarded to localhost  
