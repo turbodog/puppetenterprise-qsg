@@ -1,0 +1,3 @@
+[submodule "getlatest"]
+	path = getlatest
+	url = https://bitbucket.org/lindseysmith/getlatest
