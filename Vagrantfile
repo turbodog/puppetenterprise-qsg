@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "puppetlabs/centos-6.6-64-nocm"
+  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
 
   # Turn off the firewall and other post-config steps
   config.vm.provision "shell", path: "scripts/linux.sh"
