@@ -1,5 +1,7 @@
 puppet-enterprise-*
 .vagrant
-master.answers
+master.answers*
 installme.tar
 .DS_store
+id_rsa
+license.key
