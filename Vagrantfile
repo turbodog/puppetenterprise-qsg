@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         master.vm.network :private_network, ip: "192.168.100.2"
         master.vm.network :forwarded_port, guest: 3000, host: 3000
         master.vm.network :forwarded_port, guest: 443, host: 4443
-        master.hostmanager.aliases = %w(master puppet)
+        master.hostmanager.aliases = %w(master puppet master.delivery.puppetlabs.net)
         master.vm.provision "shell", path: "scripts/master.sh"
         config.vm.provider :virtualbox do |vb|
           vb.customize ["modifyvm", :id, "--memory", "4096"]
