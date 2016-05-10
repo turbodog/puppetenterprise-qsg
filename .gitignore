@@ -5,3 +5,4 @@ installme.tar
 .DS_store
 id_rsa
 license.key
+csr_attributes.yaml
