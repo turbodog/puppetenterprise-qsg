@@ -6,3 +6,4 @@ installme.tar
 id_rsa
 license.key
 csr_attributes.yaml
+custom-pe.conf

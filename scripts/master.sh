@@ -1,1 +1,1 @@
-sudo hostname master
+sudo hostname master.delivery.puppetlabs.net
